@@ -17,7 +17,15 @@ spec:
       - name: tetris
         image: shaikmustafa/mytetrisgame:v2
         ports:
-        - containerPort: 3000   # Use port 3000
+        - containerPort: 3000 # Use port 3000
+        volumeMounts:
+          - name: myvol
+            mountPath: /var/jenkins
+      volumes:
+        - name: myvol
+          persistentVolumeClaim: 
+            claimName: mypvc
+          
 
 ---
 apiVersion: v1
